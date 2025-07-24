@@ -46,7 +46,7 @@ def seed_tables():
 
     db.session.add_all(teachers)
 
-    # Commit 
+    # Commit
     db.session.commit()
 
     print("Tables seeded.")

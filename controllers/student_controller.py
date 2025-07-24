@@ -60,7 +60,7 @@ def create_a_student():
 
         # Add the new student data to the session
         db.session.add(new_student)
-        
+
         # Commit the session
         db.session.commit()
 
@@ -69,7 +69,7 @@ def create_a_student():
     except IntegrityError as err:
         if err.orig.pgcode == errorcodes.NOT_NULL_VIOLATION:
             return {"message": f"Required field {err.orig.diag.column_name} cannot be null."}, 400
-        
+
         if err.orig.pgcode == errorcodes.UNIQUE_VIOLATION:
             return {"message": "Email has to be unique"}, 400
         else:
@@ -92,7 +92,7 @@ def delete_student(student_id):
     else:
         # return an acknowledgement message
         return {"message": f"Student with id '{student_id}' does not exist"}, 404
-    
+
 # UPDATE /students/id
 @student_bp.route("/<int:student_id>", methods=["PUT", "PATCH"])
 def update_student(student_id):
